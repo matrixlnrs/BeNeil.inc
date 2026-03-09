@@ -24,7 +24,7 @@ L'interface est exclusivement textuelle (Terminal) :
 
 ## Système de Jauges
 
-* Mental : Si elle tombe à 0%, Neil subit un Burnout.
+* Mental : Si elle tombe à 0%, Neil subit un burnout.
 * C-Skills : Représente la réussite académique. À 0%, Neil est exclu de l'école.
 * Social : Gère la stabilité des relations (Le roster avec Ngoc et Charlotte).
-* Cash : Ton budget de survie. Attention aux restos chic et aux cadeaux imprévus !
+* Cash : Ton budget. Attention aux prix des restaurants !
