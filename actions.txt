@@ -1,13 +1,38 @@
-# ID;Description;Sante;Etudes;Bonheur;Argent;Req_Amour;Cible
-1;Reviser le C a la BU;-10;+25;-5;0;0;0
-2;Tricher au partiel;-30;+40;-20;0;0;0
-3;Travailler au McDo;-20;0;-15;+85;0;0
-4;Match Tinder avec Ngoc;0;0;+15;-5;0;1
-5;Date au Cine avec Ngoc;-10;0;+25;-40;1;1
-6;Officialiser avec Ngoc (En Couple);+20;-10;+40;-50;2;1
-7;DM Charlotte sur Insta;0;0;+10;-2;0;2
-8;Resto chic avec Charlotte;-15;0;+35;-90;1;2
-9;Officialiser avec Charlotte (En Couple);+20;-10;+40;-60;2;2
-10;Soiree a trois (PIRATERIE);+50;-50;+100;-200;3;3
-11;Mensonge par SMS;-10;0;+5;0;3;3
-12;Acheter des fleurs pour se faire pardonner;-5;0;+20;-40;0;0
+# ID;DESCRIPTION;SANTE;ETUDES;BONHEUR;ARGENT;REQ_AMOUR;CIBLE;LIEU
+# Lieux : 0:PARTOUT, 1:CROUS, 2:809, 3:APPART, 4:RUE
+
+# --- CATEGORIE : ETUDES & SURVIE ---
+1;Reviser le C à l'appart;-10;25;-5;0;0;0;4
+2;Hacker l ENT;-30;45;-20;0;0;0;0
+3;Travailler au McDo;-25;0;-15;85;0;0;4
+4;Vendre des puffs devant l ISEN;-20;-5;-15;150;0;0;4
+15;Dormir en cours de Traitement du Signal;30;-15;10;0;0;0;1
+16;Nuit blanche Projet C;-45;55;-25;0;0;0;3
+17;Manger un grec au CROUS;15;0;10;-8;0;0;1
+18;Triple Espresso au 809;5;10;-5;-2;0;0;2
+19;Skip les amphis de 8h;35;-25;20;0;0;0;3
+21;Vendre ses fiches au CROUS;-10;0;-5;45;0;0;1
+
+# --- CATEGORIE : ROMANCE NGOC (Cible 1) ---
+5;Match Tinder avec Ngoc;0;0;15;0;0;1;4
+6;Date voiture avec Ngoc;-10;0;25;-10;1;1;4
+7;Officialiser avec Ngoc;20;-10;45;-55;2;1;3
+22;Reviser avec Ngoc;5;15;15;0;1;1;0
+24;Netflix and Chill Ngoc;25;-15;35;-15;2;1;3
+26;Week-end a Paris avec Ngoc;35;-30;65;-250;2;1;4
+
+# --- CATEGORIE : ROMANCE CHARLOTTE (Cible 2) ---
+8;DM Charlotte sur Insta;0;0;10;-2;0;0;0
+9;Resto chic avec Charlotte;-15;0;40;-95;1;2;4
+10;Officialiser Charlotte;20;-10;45;-65;2;2;3
+23;Bijou surprise Charlotte;0;0;50;-130;2;2;4
+25;Scene de jalousie au 809;-25;0;-45;0;1;2;2
+27;Sandwich triangle Charlotte;-5;0;15;-6;1;2;4
+
+# --- CATEGORIE : PIRATERIE & DRAMA (Cible 3) ---
+11;Soiree au 809 avec les deux;50;-50;100;-200;3;3;2
+12;Mensonge par SMS;-10;0;5;0;3;3;0
+13;Fleurs pour se pardonner;-5;0;20;-45;0;3;4
+28;Se tromper de prenom au 809;-35;0;-70;0;3;3;2
+29;Diner chandelles double;-45;0;60;-190;3;3;4
+30;Installer un Spyware tel;-20;25;-15;-30;3;3;3

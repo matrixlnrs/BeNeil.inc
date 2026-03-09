@@ -1,0 +1,16 @@
+# --- Exécutables et Objets ---
+beneil
+*.o
+*.out
+
+# --- Sauvegardes du jeu ---
+neil_save.dat
+
+# --- Fichiers système et IDE ---
+.DS_Store
+.vscode/
+.history/
+
+# --- Divers ---
+*.log
+*.tmp
