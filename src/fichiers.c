@@ -15,31 +15,35 @@ int charger_actions(Action tab[]) {
     int nb = 0; 
     char buf[256];
     
-    while (fgets(buf, 256, f) && nb < 100) { // 100 actions max
-        // On ignore les lignes vides ou les commentaires (qui commencent par #)
+    while (fgets(buf, 256, f) && nb < 100) { 
         if (buf[0] == '#' || strlen(buf) < 10) continue;
         
-        // On parse les données selon ton format : ID;DESC;SANTE;ETUDES;BONHEUR;ARGENT;REQ;CIBLE;LIEU
-        sscanf(buf, "%d;%[^;];%d;%d;%d;%f;%d;%d;%d", 
+        // On parse EXACTEMENT les 11 colonnes avec l'Energie et la Durée !
+        // ID ; DESC ; SANTE ; ENERGIE ; ETUDES ; BONHEUR ; ARGENT ; REQ ; CIBLE ; LIEU ; DUREE
+        int lus = sscanf(buf, "%d;%[^;];%d;%d;%d;%d;%f;%d;%d;%d;%d", 
                &tab[nb].id, 
                tab[nb].desc, 
                &tab[nb].m_san, 
+               &tab[nb].m_ene,
                &tab[nb].m_etu, 
                &tab[nb].m_bon, 
-               &tab[nb].m_arg, 
+               &tab[nb].m_arg,   // (On garde le %f car ton argent est un float)
                &tab[nb].req_am, 
                &tab[nb].cible, 
-               (int*)&tab[nb].lieu);
+               (int*)&tab[nb].lieu,
+               &tab[nb].duree_minutes); // <-- La durée est bien lue
                
-        // ATTENTION : Ton fichier actions.txt n'a pas de durée !
-        // Pour l'instant on met une durée par défaut de 2h (120 minutes) pour tout le monde.
-        // On affinera ça plus tard.
-        tab[nb].duree_minutes = 120; 
-               
-        nb++;
+        // Sécurité : On valide l'action UNIQUEMENT si les 11 variables ont été lues correctement
+        if (lus == 11) {
+            nb++; // On passe à la case suivante du tableau
+        } else {
+            // (Optionnel) Si une ligne est mal écrite dans actions.txt, elle sera ignorée
+            // printf("Avertissement : Ligne %d mal formatee ignorée.\n", nb + 1);
+        }
     }
+    
     fclose(f);
-    return nb; // Retourne le nombre d'actions chargées
+    return nb; 
 }
 
 // Les fonctions de sauvegarde binaires (pour valider le cahier des charges)

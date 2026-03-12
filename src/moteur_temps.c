@@ -174,7 +174,7 @@ void verifier_collision_sociale(Neil *n) {
         // 2. Modificateur de Lieu
         if (n->lieu_actuel == FOYER809) {
             risque_base = 20; // Danger absolu en soirée
-        } else if (n->lieu_actuel == CROUS || n->lieu_actuel == RUE) {
+        } else if (n->lieu_actuel == CROUS || n->lieu_actuel == VILLE) {
             risque_base = 5;  // Danger modéré en public
         } else if (n->lieu_actuel == APPART) {
             risque_base = 1;  // Danger faible à domicile (visite surprise)
@@ -194,10 +194,35 @@ void verifier_collision_sociale(Neil *n) {
             taper_texte("!!! COLLISION SOCIALE DETECTEE !!!", MAGENTA BOLD, tw);
             printf("\n");
             
-            print_padding(tw, 60);
-            printf("Le temps s'arrete. La musique du 809 semble s'assourdir.\n");
-            print_padding(tw, 60);
-            printf("Ngoc et Charlotte viennent de se croiser. Elles parlent.\n");
+            // --- LE TEXTE S'ADAPTE PARFAITEMENT AU LIEU ---
+            if (n->lieu_actuel == APPART) {
+                // Cas 1 : À la maison
+                print_padding(tw, 60);
+                printf("DING DONG. Quelqu'un sonne a la porte de l'appart...\n");
+                print_padding(tw, 60);
+                printf("Ngoc ET Charlotte ont eu l'idee de vous faire une surprise.\n");
+                print_padding(tw, 60);
+                printf("Elles se croisent sur le palier. Le silence est lourd.\n");
+            } 
+            else if (n->lieu_actuel == FOYER809) { 
+                // Cas 2 : En boîte de nuit
+                print_padding(tw, 60);
+                printf("Le temps s'arrete. La musique du 809 semble s'assourdir.\n");
+                print_padding(tw, 60);
+                printf("Ngoc et Charlotte viennent de se croiser pres du bar.\n");
+                print_padding(tw, 60);
+                printf("La soiree vient de prendre une tournure glaciale.\n");
+            } 
+            else {
+                // Cas 3 : Partout ailleurs (ISEN, Rue, CROUS, Entreprise)
+                print_padding(tw, 60);
+                printf("Le temps s'arrete. Les bruits de fond se figent.\n");
+                print_padding(tw, 60);
+                printf("Le karma a frappe : Ngoc et Charlotte sont au meme endroit.\n");
+                print_padding(tw, 60);
+                printf("Elles viennent de se croiser juste devant vous.\n");
+            }
+            
             print_padding(tw, 60);
             printf("Elles vous regardent simultanement avec degout.\n\n");
             
@@ -220,7 +245,6 @@ void verifier_collision_sociale(Neil *n) {
 }
 
 // 6. L'ELLIPSE TEMPORELLE (Un peu comme dans "Youtuber's Life")
-// 6. L'ELLIPSE TEMPORELLE (Le mode "Youtuber's Life")
 void fast_forward(Neil* n, int minutes_a_passer, const char* nom_activite, int est_repos) {
     int tw = get_terminal_width();
     
@@ -277,8 +301,8 @@ void fast_forward(Neil* n, int minutes_a_passer, const char* nom_activite, int e
             break; 
         }
 
-        // VÉRIFICATION 3 : LE QCM ALÉATOIRE (ISEN)
-        if (est_repos == 0 && n->lieu_actuel == 5) {
+        // VÉRIFICATION 3 : LE QCM ALÉATOIRE (Seulement à l'ISEN et pendant les cours !)
+        if (est_repos == 0 && n->lieu_actuel == 5 && horloge_jeu.heure >= 8 && horloge_jeu.heure < 16) {
             int de_chaos = rand() % 100;
             if (de_chaos < 2) { 
                 declencher_imprevu(n); 

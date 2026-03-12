@@ -2,7 +2,7 @@
 #define ENTITES_H
 
 // Lieux possibles
-typedef enum { PARTOUT, CROUS, FOYER809, APPART, RUE, ISEN, ENTREPRISE } Lieu;
+typedef enum { PARTOUT, CROUS, FOYER809, APPART, VILLE, ISEN, ENTREPRISE } Lieu;
 // Types de relations
 typedef enum { SOLO, DRAGUE, COUPLE, PIRATE } StatutAmour;
 
@@ -10,7 +10,7 @@ typedef enum { SOLO, DRAGUE, COUPLE, PIRATE } StatutAmour;
 typedef struct {
     int id;
     char desc[128];
-    int m_san, m_etu, m_bon, req_am, cible; 
+    int m_san, m_ene, m_etu, m_bon, req_am, cible; 
     float m_arg;
     Lieu lieu;
     int duree_minutes; // NOUVEAU : Combien de temps prend l'action ?
@@ -33,6 +33,11 @@ typedef struct {
     StatutAmour etat_charlotte;
     int suspicion;     // Paranoïa / Karma
     Lieu lieu_actuel;
+
+    // Traqueurs quotidiens
+    int dernier_jour_mcdo;
+    int dernier_jour_dm_ngoc;
+    int dernier_jour_dm_charlotte;
     
 } Neil;
 

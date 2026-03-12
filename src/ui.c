@@ -57,7 +57,7 @@ const char* noms_lieux[] = {
     "CROUS", 
     "809", 
     "APPART", 
-    "RUE", 
+    "VILLE", 
     "ISEN", 
     "ENTREPRISE"
 };
