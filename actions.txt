@@ -21,7 +21,7 @@
 11;Liker les story Insta de Ngoc;5;0;0;10;0;0;1;0;15
 12;Reviser les pointeurs avec Ngoc;-5;-10;25;15;0;1;1;3;120
 13;Soiree Netflix & Chill (Ngoc);20;10;-5;25;-5;1;1;3;180
-14;Payer le resto U a Ngoc;10;20;0;15;-7;1;1;1;60
+14;Payer le resto a Ngoc;10;20;0;15;-7;1;1;1;60
 15;Officialiser avec Ngoc (Statut Couple);20;0;-10;45;-15;2;1;0;60
 16;Week-end Hackathon en amoureux;-20;-30;40;30;-20;2;1;0;240
 
