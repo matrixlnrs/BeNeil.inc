@@ -27,6 +27,6 @@ extern Evenement* tete_echeancier;
 void init_horloge();
 void ajouter_evenement(int minute_declenchement, int id_action, const char* desc);
 void executer_prochain_evenement(Neil* n);
-void fast_forward(Neil* n, int minutes_a_passer, const char* nom_activite);
+void fast_forward(Neil* n, int minutes_a_passer, const char* nom_activite, int est_repos);
 
 #endif

@@ -89,38 +89,31 @@ void avancer_horloge_un_pas(int minutes) {
     }
 }
 
-// 6. L'ELLIPSE TEMPORELLE (Le mode "Youtuber's Life")
-void fast_forward(Neil* n, int minutes_a_passer, const char* nom_activite) {
-    printf("\n>>> DEBUT ELLIPSE : %s (%d minutes) <<<\n", nom_activite, minutes_a_passer);
+// 6. L'ELLIPSE TEMPORELLE (Un peu comme dans "Youtuber's Life")
+void fast_forward(Neil* n, int minutes_a_passer, const char* nom_activite, int est_repos) {
+    // ... (garde le debut pareil)
     
-    // On avance par "pas" de 15 minutes pour vérifier souvent l'échéancier
     for (int i = 0; i < minutes_a_passer; i += 15) {
         int pas = (minutes_a_passer - i >= 15) ? 15 : (minutes_a_passer - i);
-        
         avancer_horloge_un_pas(pas);
         
-        // Simuler la fatigue et la faim qui montent avec le temps
-        n->energie -= 1; // Perd 1 d'énergie toutes les 15 min
-        n->faim += 2;    // La faim monte plus vite
-        
-        printf("[Jour %02d - %02d:%02d] ...\n", horloge_jeu.jour, horloge_jeu.heure, horloge_jeu.minute);
-        
-        // VÉRIFICATION 1 : Y a-t-il un événement prévu à cette heure-ci ?
-        // On utilise une boucle while car il peut y avoir plusieurs événements à la même minute
-        while (tete_echeancier != NULL && tete_echeancier->declenchement_absolu <= horloge_jeu.temps_absolu) {
-            executer_prochain_evenement(n);
+        // LA CORRECTION EST ICI :
+        if (est_repos == 1) {
+            n->energie += 4; // Régénère l'énergie
+            if (n->energie > 100) n->energie = 100;
+        } else {
+            n->energie -= 1; // Épuisement normal
+            n->faim += 2;
         }
         
-        // VÉRIFICATION 2 : Interruption critique (Seuils)
-        if (n->energie <= 0) {
+        // ... (Vérification 1 : les événements, pareil qu'avant)
+        
+        // Vérification 2 : Seulement si on ne dort pas !
+        if (est_repos == 0 && n->energie <= 0) {
             printf("\n!!! URGENCE : Neil s'effondre de fatigue !!!\n");
-            n->energie = 0; // On bloque à 0
-            n->sante_mentale -= 30; // Gros malus pour le burnout
-            break; // ON CASSE LA BOUCLE ! L'activité est interrompue.
+            n->energie = 0;
+            n->sante_mentale -= 30;
+            break; 
         }
-        
-        // Optionnel : un petit usleep(100000) ici pour l'animation texte
     }
-    
-    printf(">>> FIN DE L'ELLIPSE <<<\n\n");
 }
