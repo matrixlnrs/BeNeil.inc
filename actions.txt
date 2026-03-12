@@ -1,8 +1,8 @@
 # ID;DESCRIPTION;SANTE;ETUDES;BONHEUR;ARGENT;REQ_AMOUR;CIBLE;LIEU
-# Lieux : 0:PARTOUT, 1:CROUS, 2:809, 3:APPART, 4:RUE
+# Lieux : 0:PARTOUT, 1:CROUS, 2:809, 3:APPART, 4:RUE, 5:ISEN, 6:ENTREPRISE
 
 # --- CATEGORIE : ETUDES & SURVIE ---
-1;Reviser le C à l'appart;-10;25;-5;0;0;0;4
+1;Reviser le C a l'appart;-10;25;-5;0;0;0;3
 2;Hacker l ENT;-30;45;-20;0;0;0;0
 3;Travailler au McDo;-25;0;-15;85;0;0;4
 4;Vendre des puffs devant l ISEN;-20;-5;-15;150;0;0;4

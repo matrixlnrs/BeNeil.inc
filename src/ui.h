@@ -28,4 +28,5 @@ void animation_flash(int iterations);
 void barre_master(int val, const char* label, const char* col, int tw);
 void afficher_ui(Neil *n);
 
+void afficher_ecran_fin(Neil *n);
 #endif
