@@ -70,7 +70,7 @@ int main() {
         n.suspicion = 0;
         n.lieu_actuel = APPART;
         
-        // Initialisation des cooldowns
+        // Initialisation des cooldowns pour les actions limitées à 1 fois par jour
         n.dernier_jour_mcdo = 0;
         n.dernier_jour_dm_ngoc = 0;
         n.dernier_jour_dm_charlotte = 0;
@@ -188,7 +188,7 @@ int main() {
             
             // Application des statistiques
             n.sante_mentale += action_choisie.m_san;
-            n.energie += action_choisie.m_ene; // ENERGIE INTEGREE ICI !
+            n.energie += action_choisie.m_ene;
             n.etudes += action_choisie.m_etu;
             n.bonheur += action_choisie.m_bon;
             n.argent += action_choisie.m_arg;

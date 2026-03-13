@@ -34,7 +34,7 @@ void ajouter_evenement(int temps_absolu_declenchement, int id_action, const char
     nouvel_ev->description[127] = '\0'; // Sécurité pour les chaînes en C
     nouvel_ev->suivant = NULL;
 
-    // Logique d'insertion : L'échéancier doit toujours être trié chronologiquement !
+    // Logique d'insertion : échéancier trié chronologiquement
     // Cas A : La liste est vide OU le nouvel événement arrive AVANT le premier de la liste
     if (tete_echeancier == NULL || tete_echeancier->declenchement_absolu > temps_absolu_declenchement) {
         nouvel_ev->suivant = tete_echeancier;
@@ -62,7 +62,6 @@ void executer_prochain_evenement(Neil* n) {
     tete_echeancier = ev_a_traiter->suivant; // La tête recule d'un cran
 
     // --- ICI ON APPLIQUE L'EFFET DE L'ÉVÉNEMENT SUR NEIL ---
-    // (Pour l'instant un simple printf, on liera ça à tes actions plus tard)
     printf("\n>>> EVENEMENT ATTEINT : %s <<<\n", ev_a_traiter->description);
     
     // Si c'est un événement négatif (ex: id = -1 pour Interro Surprise)
@@ -71,7 +70,7 @@ void executer_prochain_evenement(Neil* n) {
         printf("-> Neil perd 20 points de sante mentale !\n");
     }
 
-    // Libération de la mémoire dynamique (Très important pour ne pas avoir de fuite mémoire !)
+    // Libération de la mémoire dynamique de l'événement traite
     free(ev_a_traiter);
 }
 
@@ -91,7 +90,7 @@ void avancer_horloge_un_pas(int minutes) {
     }
 }
 
-// LE GENERATEUR DE CHAOS (L'Interro Surprise)
+// LE GENERATEUR D IMPREVU (Interro Surprise)
 void declencher_imprevu(Neil *n) {
     int tw = get_terminal_width();
     
@@ -194,7 +193,7 @@ void verifier_collision_sociale(Neil *n) {
             taper_texte("!!! COLLISION SOCIALE DETECTEE !!!", MAGENTA BOLD, tw);
             printf("\n");
             
-            // --- LE TEXTE S'ADAPTE PARFAITEMENT AU LIEU ---
+            // --- LE TEXTE S'ADAPTE AU LIEU ---
             if (n->lieu_actuel == APPART) {
                 // Cas 1 : À la maison
                 print_padding(tw, 60);
@@ -236,7 +235,7 @@ void verifier_collision_sociale(Neil *n) {
             // Retour à la case départ pour les deux
             n->etat_ngoc = SOLO;
             n->etat_charlotte = SOLO;
-            n->suspicion = 0; // Au moins, il n'y a plus de secret !
+            n->suspicion = 0;
             
             sleep(4); // Pause dramatique pour laisser le joueur pleurer
             printf("\033[H\033[J\n\n");
@@ -283,7 +282,7 @@ void fast_forward(Neil* n, int minutes_a_passer, const char* nom_activite, int e
         printf("] %d%%\n\n", progress);
 
         fflush(stdout); // Force l'affichage immédiat dans le terminal
-        usleep(150000); // Pause de 0.15 seconde pour voir le temps défiler !
+        usleep(150000); // Pause de 0.15 seconde pour voir le temps défiler
         // -----------------------------------------------------------
 
         // VÉRIFICATION 1 : L'Échéancier classique
@@ -297,11 +296,11 @@ void fast_forward(Neil* n, int minutes_a_passer, const char* nom_activite, int e
             print_padding(tw, 40); printf(RED BOLD "!!! URGENCE : Neil s'effondre de fatigue !!!\n" RESET);
             n->energie = 0;
             n->sante_mentale -= 30;
-            sleep(2); // Laisse le temps de lire
+            sleep(2); // Laisser le temps de lire
             break; 
         }
 
-        // VÉRIFICATION 3 : LE QCM ALÉATOIRE (Seulement à l'ISEN et pendant les cours !)
+        // VÉRIFICATION 3 : LE QCM ALÉATOIRE (Seulement à l'ISEN et pendant les cours)
         if (est_repos == 0 && n->lieu_actuel == 5 && horloge_jeu.heure >= 8 && horloge_jeu.heure < 16) {
             int de_chaos = rand() % 100;
             if (de_chaos < 2) { 

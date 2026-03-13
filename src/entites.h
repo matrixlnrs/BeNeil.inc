@@ -21,9 +21,9 @@ typedef struct {
     char nom[32];
     
     // Jauges (0 à 100)
-    int sante_mentale; // Ancien "sante"
-    int energie;       // NOUVEAU : Pour la fatigue et les nuits blanches
-    int faim;          // NOUVEAU : Besoin primaire
+    int sante_mentale; 
+    int energie;       
+    int faim;          
     int etudes;        // Compétence scolaire (C-SKILLS)
     int bonheur;       // Social / Fun
     

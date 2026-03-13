@@ -27,18 +27,18 @@ int charger_actions(Action tab[]) {
                &tab[nb].m_ene,
                &tab[nb].m_etu, 
                &tab[nb].m_bon, 
-               &tab[nb].m_arg,   // (On garde le %f car ton argent est un float)
+               &tab[nb].m_arg,   
                &tab[nb].req_am, 
                &tab[nb].cible, 
                (int*)&tab[nb].lieu,
-               &tab[nb].duree_minutes); // <-- La durée est bien lue
+               &tab[nb].duree_minutes); 
                
         // Sécurité : On valide l'action UNIQUEMENT si les 11 variables ont été lues correctement
         if (lus == 11) {
             nb++; // On passe à la case suivante du tableau
         } else {
-            // (Optionnel) Si une ligne est mal écrite dans actions.txt, elle sera ignorée
-            // printf("Avertissement : Ligne %d mal formatee ignorée.\n", nb + 1);
+            // Si une ligne est mal écrite dans actions.txt, elle sera ignorée
+            // printf("Avertissement : Ligne %d mal formatee.\n", nb + 1);
         }
     }
     
@@ -51,7 +51,7 @@ void sauvegarder_partie(Neil *n) {
     FILE *f = fopen("neil_save.dat", "wb");
     if (f) {
         fwrite(n, sizeof(Neil), 1, f);
-        fwrite(&horloge_jeu, sizeof(Horloge), 1, f); // On sauvegarde aussi l'heure !
+        fwrite(&horloge_jeu, sizeof(Horloge), 1, f); 
         fclose(f);
     }
 }
