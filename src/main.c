@@ -96,7 +96,7 @@ int main() {
     // ==========================================
     // 3. BOUCLE PRINCIPALE DU JEU
     // ==========================================
-    while (horloge_jeu.jour <= 30 && n.sante_mentale > 0 && n.etudes > 0) {
+    while (horloge_jeu.jour <= 2 && n.sante_mentale > 0 && n.etudes > 0) {
         
         int jour_semaine = (horloge_jeu.jour - 1) % 7 + 1;
         
