@@ -2,6 +2,9 @@
 
 Ce projet est un simulateur de vie étudiante développé en Langage C, modélisant le quotidien d'un apprenti à l'ISEN. Ce projet sera soutenu le 13/03/2026 (Coefficient 40%).
 
+Bien évidemment l'IA a été utilisé pendant le développement, surtout pour l'UI et les animations, choses qu'on ne maîtrisait absolument pas,
+et le Makefile car un peu enervant.
+
 ---
 
 ## Objectif du projet:
